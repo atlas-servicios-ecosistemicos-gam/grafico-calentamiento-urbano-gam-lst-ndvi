@@ -1,0 +1,67 @@
+---
+title: "Gráfico de índice de vegetación (NDVI) y temperatura superficial en la Gran Área Metropolitana"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+#-------------------- Paquetes --------------------
+
+library(flexdashboard)
+library(plotly)
+
+#--------------- URL de geoservicios --------------
+
+url_csv_lst_ndbi_ndvi <-
+  "https://raw.githubusercontent.com/atlas-servicios-ecosistemicos-gam/datos-calentamiento-urbano/main/gam/stats-lst-ndbi-ndvi.csv"
+
+#--------------- Objetos df ---------------
+
+# Datos de temperatura superficial, NDBI y NDVI
+df_lst_ndbi_ndvi <- 
+  read.csv(url_csv_lst_ndbi_ndvi)
+
+# Ordenar de mayor a menor
+df_lst_ndbi_ndvi.temp <- order(df_lst_ndbi_ndvi$LST_MEAN, decreasing=FALSE)
+
+# Nuevo data frame ordenado
+df_lst_ndbi_ndvi.ordenado_ndvi <- df_lst_ndbi_ndvi[df_lst_ndbi_ndvi.temp,]
+
+```
+
+Row
+-----------------------------------------------------------------------
+
+### 
+
+```{r}
+
+ay <- list(
+  tickfont = list(color = "red"),
+  overlaying = "y",
+  side = "right",
+  title = "NDVI"
+)
+
+plot_ly(data = df_lst_ndbi_ndvi.ordenado_ndvi,
+        x = ~ reorder(CANTON, -LST_MEAN),
+        y = ~ LST_MEAN,
+        name = 'Temperatura superficial',
+        type = 'scatter',
+        mode = 'lines',
+        line = list(color = "blue")) %>%
+  add_trace(y = ~ NDVI_MEAN,
+            name = 'NDVI',
+            mode = 'lines',
+            line = list(color = "red"),
+            yaxis = "y2") %>%  
+  layout(title = "",
+         yaxis = list(title = "Temperatura superficial"),
+         yaxis2 = ay,
+         xaxis = list(title = "Cantón"),
+         legend = list(x = 0.1, y = 0.9),
+         hovermode = "compare")
+
+```
