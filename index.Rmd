@@ -50,11 +50,11 @@ plot_ly(data = df_lst_ndbi_ndvi.ordenado_ndvi,
         y = ~ LST_MEAN,
         name = 'LST',
         type = 'scatter',
-        mode = 'lines',
+        mode = 'lines+markers',
         line = list(color = "red")) %>%
   add_trace(y = ~ NDVI_MEAN,
             name = 'NDVI',
-            mode = 'lines',
+            mode = 'lines+markers',
             line = list(color = "green"),
             yaxis = "y2") %>%  
   layout(title = "La vegetación urbana regula la temperatura",
