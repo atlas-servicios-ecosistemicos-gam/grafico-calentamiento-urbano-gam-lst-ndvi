@@ -19,9 +19,9 @@ url_csv_lst_ndbi_ndvi <-
 
 #--------------- Objetos df ---------------
 
-# Datos de temperatura superficial, NDBI y NDVI
+# Datos de LST, NDBI y NDVI
 df_lst_ndbi_ndvi <- 
-  read.csv(url_csv_lst_ndbi_ndvi)
+  read.csv(url_csv_lst_ndbi_ndvi, encoding = "UTF-8")
 
 # Ordenar de mayor a menor
 df_lst_ndbi_ndvi.temp <- order(df_lst_ndbi_ndvi$LST_MEAN, decreasing=FALSE)
