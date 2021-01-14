@@ -51,17 +51,19 @@ plot_ly(data = df_lst_ndbi_ndvi.ordenado_ndvi,
         name = 'LST',
         type = 'scatter',
         mode = 'lines+markers',
-        line = list(color = "red")) %>%
+        line = list(color = "red"),
+        marker = list(color = "red")) %>%
   add_trace(y = ~ NDVI_MEAN,
             name = 'NDVI',
             mode = 'lines+markers',
             line = list(color = "green"),
+            marker = list(color = "green"),
             yaxis = "y2") %>%  
   layout(title = "La vegetación urbana regula la temperatura",
          yaxis = list(title = "LST", tickfont = list(color = "red")),
          yaxis2 = ay,
          xaxis = list(title = "Cantón"),
-         legend = list(x = 0.1, y = 0.9),
+         legend = list(x = 0.1, y = 0.1),
          hovermode = "compare")  %>%
   config(locale = "es")
 
