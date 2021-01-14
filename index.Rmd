@@ -1,5 +1,5 @@
 ---
-title: "Índice de vegetación (NDVI) y temperatura superficial (LST) de la Gran Área Metropolitana"
+title: "Temperatura superficial (LST) e índice de vegetación (NDVI) de la Gran Área Metropolitana"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
