@@ -27,7 +27,7 @@ df_lst_ndbi_ndvi <-
 df_lst_ndbi_ndvi.temp <- order(df_lst_ndbi_ndvi$LST_MEAN, decreasing=FALSE)
 
 # Nuevo data frame ordenado
-df_lst_ndbi_ndvi.ordenado_ndvi <- df_lst_ndbi_ndvi[df_lst_ndbi_ndvi.temp,]
+df_lst_ndbi_ndvi.ordenado_lst <- df_lst_ndbi_ndvi[df_lst_ndbi_ndvi.temp,]
 
 ```
 
@@ -45,7 +45,7 @@ ay <- list(
   title = "NDVI"
 )
 
-plot_ly(data = df_lst_ndbi_ndvi.ordenado_ndvi,
+plot_ly(data = df_lst_ndbi_ndvi.ordenado_lst,
         x = ~ reorder(CANTON, -LST_MEAN),
         y = ~ LST_MEAN,
         name = 'LST',
