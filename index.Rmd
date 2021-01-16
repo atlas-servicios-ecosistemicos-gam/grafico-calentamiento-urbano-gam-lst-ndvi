@@ -15,7 +15,7 @@ library(plotly)
 #--------------- URL de geoservicios --------------
 
 url_csv_lst_ndbi_ndvi <-
-  "https://raw.githubusercontent.com/atlas-servicios-ecosistemicos-gam/datos-calentamiento-urbano/main/gam/stats-lst-ndbi-ndvi.csv"
+  "https://raw.githubusercontent.com/atlas-servicios-ecosistemicos-gam/datos-calentamiento-urbano/main/gam/DATOS_CANTONES_LST_NDVI_NDBI.csv"
 
 #--------------- Objetos df ---------------
 
@@ -61,7 +61,7 @@ plot_ly(data = df_lst_ndbi_ndvi.ordenado_ndvi,
          yaxis = list(title = "LST", tickfont = list(color = "red")),
          yaxis2 = ay,
          xaxis = list(title = "Cantón"),
-         legend = list(x = 0.1, y = 0.1),
+         legend = list(x = 0.5, y = 1.0),
          hovermode = "compare")  %>%
   config(locale = "es")
 
